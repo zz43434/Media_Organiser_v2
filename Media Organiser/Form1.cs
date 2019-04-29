@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Json.Net;
+using Media_Organiser.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 namespace Media_Organiser
 {
@@ -18,16 +22,11 @@ namespace Media_Organiser
             InitializeComponent();
         }
 
+        List<MediaFile> mediaFiles = new List<MediaFile>();
+        string[] filePaths;
+
         private void button1_Click(object sender, EventArgs e)
         {
-            string lines = "ffs";
-
-            // Write the string to a file.
-            System.IO.StreamWriter file = new System.IO.StreamWriter(".\\MediaFiles.json");
-            file.WriteLine(lines);
-            
-            file.Close();
-
             FolderBrowserDialog folderDlg = new FolderBrowserDialog();
             folderDlg.ShowNewFolderButton = true;
             // Show the FolderBrowserDialog.  
@@ -36,22 +35,42 @@ namespace Media_Organiser
             {
                 label2.Text = folderDlg.SelectedPath;
                 Environment.SpecialFolder root = folderDlg.RootFolder;
+                filePaths = Directory.GetFiles(@folderDlg.SelectedPath,"*", SearchOption.AllDirectories);
             }
 
-            string[] filePaths = Directory.GetFiles(@folderDlg.SelectedPath);
-            label3.Text = string.Join(" ", filePaths.ToString());
-
-            string[] files;
-
-            for (var i = 0; i < filePaths.Length; i++)
+            if (result == DialogResult.OK)
             {
-                var fn = new FileInfo(filePaths[i]);
-                Console.WriteLine(fn.Name);
-                Console.WriteLine(fn.Extension);
-                Console.WriteLine(fn.Directory);
+                for (var i = 0; i < filePaths.Length; i++)
+                {
+                    var fn = new FileInfo(filePaths[i]);
+                    MediaFile importFile = new MediaFile();
+                    importFile.Name = fn.Name.ToString();
+                    importFile.Type = fn.Extension.ToString();
+                    importFile.Path = fn.Directory.ToString();
+
+                    mediaFiles.Add(importFile);
+                }
             }
 
-            dataGridView1.DataSource = filePaths;
+            
+
+            dataGridView1.DataSource = mediaFiles;
+
+            //using (StreamReader sr = new StreamReader(".\\MediaFiles.json"))
+            //{
+            //    string json = sr.ReadToEnd();
+            //    mediaFiles = JsonConvert.DeserializeObject<List<MediaFile>>(json);
+            //}
+
+
+            //using(StreamWriter file = File.CreateText(".\\MediaFiles.json"))
+            //{
+            //    JsonSerializer serializer = new JsonSerializer();
+
+            //    string json = JsonConvert.SerializeObject(mediaFiles); 
+
+            //    serializer.Serialize(file, json);
+            //}
 
 
 
