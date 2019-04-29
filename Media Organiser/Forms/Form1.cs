@@ -20,7 +20,7 @@ namespace Media_Organiser
         List<Playlist> playlists = new List<Playlist>();
         List<Category> categories = new List<Category>();
 
-        private void button1_Click(object sender, EventArgs e)
+        private void importToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folderDlg = new FolderBrowserDialog();
             folderDlg.ShowNewFolderButton = true;
@@ -29,7 +29,7 @@ namespace Media_Organiser
             if (result == DialogResult.OK)
             {
                 Environment.SpecialFolder root = folderDlg.RootFolder;
-                filePaths = Directory.GetFiles(@folderDlg.SelectedPath,"*", SearchOption.AllDirectories);
+                filePaths = Directory.GetFiles(@folderDlg.SelectedPath, "*", SearchOption.AllDirectories);
             }
 
             if (result == DialogResult.OK)
@@ -45,41 +45,8 @@ namespace Media_Organiser
                     mediaFiles.Add(importFile);
                 }
             }
+
             dataGridView1.DataSource = mediaFiles;
-
-            //using (StreamReader sr = new StreamReader(".\\MediaFiles.json"))
-            //{
-            //    string json = sr.ReadToEnd();
-            //    mediaFiles = JsonConvert.DeserializeObject<List<MediaFile>>(json);
-            //}
-
-
-            using (StreamWriter file = File.CreateText(".\\MediaFiles.json"))
-            {
-                JsonSerializer serializer = new JsonSerializer();
-
-                string json = JsonConvert.SerializeObject(mediaFiles);
-
-                serializer.Serialize(file, json);
-            }
-
-
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            foreach (DataGridViewRow item in this.dataGridView1.SelectedRows)
-            {
-                dataGridView1.Rows.RemoveAt(item.Index);
-            }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            AddPlaylist addPlaylist = new AddPlaylist();
-
-            addPlaylist.Show();
         }
     }
 }
