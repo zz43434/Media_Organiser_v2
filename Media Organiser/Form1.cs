@@ -41,9 +41,14 @@ namespace Media_Organiser
             string[] filePaths = Directory.GetFiles(@folderDlg.SelectedPath);
             label3.Text = string.Join(" ", filePaths.ToString());
 
-            for(var i = 0; i < filePaths.Length; i++)
+            string[] files;
+
+            for (var i = 0; i < filePaths.Length; i++)
             {
-                
+                var fn = new FileInfo(filePaths[i]);
+                Console.WriteLine(fn.Name);
+                Console.WriteLine(fn.Extension);
+                Console.WriteLine(fn.Directory);
             }
 
             dataGridView1.DataSource = filePaths;
