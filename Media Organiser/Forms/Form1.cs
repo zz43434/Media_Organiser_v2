@@ -17,6 +17,8 @@ namespace Media_Organiser
 
         List<MediaFile> mediaFiles = new List<MediaFile>();
         string[] filePaths;
+        List<Playlist> playlists = new List<Playlist>();
+        List<Category> categories = new List<Category>();
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -43,9 +45,6 @@ namespace Media_Organiser
                     mediaFiles.Add(importFile);
                 }
             }
-
-            
-
             dataGridView1.DataSource = mediaFiles;
 
             //using (StreamReader sr = new StreamReader(".\\MediaFiles.json"))
@@ -74,6 +73,13 @@ namespace Media_Organiser
             {
                 dataGridView1.Rows.RemoveAt(item.Index);
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            AddPlaylist addPlaylist = new AddPlaylist();
+
+            addPlaylist.Show();
         }
     }
 }
