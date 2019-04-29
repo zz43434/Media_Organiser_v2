@@ -1,15 +1,8 @@
-﻿using Json.Net;
-using Media_Organiser.Models;
+﻿using Media_Organiser.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
@@ -63,17 +56,25 @@ namespace Media_Organiser
             //}
 
 
-            //using(StreamWriter file = File.CreateText(".\\MediaFiles.json"))
-            //{
-            //    JsonSerializer serializer = new JsonSerializer();
+            using (StreamWriter file = File.CreateText(".\\MediaFiles.json"))
+            {
+                JsonSerializer serializer = new JsonSerializer();
 
-            //    string json = JsonConvert.SerializeObject(mediaFiles); 
+                string json = JsonConvert.SerializeObject(mediaFiles);
 
-            //    serializer.Serialize(file, json);
-            //}
+                serializer.Serialize(file, json);
+            }
 
 
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow item in this.dataGridView1.SelectedRows)
+            {
+                dataGridView1.Rows.RemoveAt(item.Index);
+            }
         }
     }
 }
