@@ -26,7 +26,6 @@ namespace Media_Organiser
             DialogResult result = folderDlg.ShowDialog();
             if (result == DialogResult.OK)
             {
-                label2.Text = folderDlg.SelectedPath;
                 Environment.SpecialFolder root = folderDlg.RootFolder;
                 filePaths = Directory.GetFiles(@folderDlg.SelectedPath,"*", SearchOption.AllDirectories);
             }
