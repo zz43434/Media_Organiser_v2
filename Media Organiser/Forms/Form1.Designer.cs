@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Directories", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Playlists", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Categories", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("File types");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("asdasdasd");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("asdasdasd");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("asdasdasd");
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Directories", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Playlists", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Categories", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("File types");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("asdasdasd");
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("asdasdasd");
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("asdasdasd");
             this.label1 = new System.Windows.Forms.Label();
             this.listViewLibrary = new System.Windows.Forms.ListView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -83,29 +83,29 @@
             // listViewLibrary
             // 
             this.listViewLibrary.AutoArrange = false;
-            listViewGroup1.Header = "Directories";
-            listViewGroup1.Name = "Directories";
-            listViewGroup1.Tag = "Directories";
-            listViewGroup2.Header = "Playlists";
-            listViewGroup2.Name = "Playlists";
-            listViewGroup2.Tag = "Playlists";
-            listViewGroup3.Header = "Categories";
-            listViewGroup3.Name = "Categories";
-            listViewGroup3.Tag = "Categories";
+            listViewGroup4.Header = "Directories";
+            listViewGroup4.Name = "Directories";
+            listViewGroup4.Tag = "Directories";
+            listViewGroup5.Header = "Playlists";
+            listViewGroup5.Name = "Playlists";
+            listViewGroup5.Tag = "Playlists";
+            listViewGroup6.Header = "Categories";
+            listViewGroup6.Name = "Categories";
+            listViewGroup6.Tag = "Categories";
             this.listViewLibrary.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2,
-            listViewGroup3});
-            listViewItem1.Group = listViewGroup3;
-            listViewItem2.Group = listViewGroup1;
-            listViewItem3.Group = listViewGroup2;
-            listViewItem4.Group = listViewGroup3;
-            listViewItem4.ToolTipText = "ad";
+            listViewGroup4,
+            listViewGroup5,
+            listViewGroup6});
+            listViewItem5.Group = listViewGroup6;
+            listViewItem6.Group = listViewGroup4;
+            listViewItem7.Group = listViewGroup5;
+            listViewItem8.Group = listViewGroup6;
+            listViewItem8.ToolTipText = "ad";
             this.listViewLibrary.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4});
+            listViewItem5,
+            listViewItem6,
+            listViewItem7,
+            listViewItem8});
             this.listViewLibrary.Location = new System.Drawing.Point(16, 40);
             this.listViewLibrary.MultiSelect = false;
             this.listViewLibrary.Name = "listViewLibrary";
@@ -266,6 +266,7 @@
             this.button2.TabIndex = 7;
             this.button2.Text = "Remove";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // tableLayoutPanel1
             // 

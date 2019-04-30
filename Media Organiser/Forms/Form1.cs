@@ -126,10 +126,7 @@ namespace Media_Organiser
                 if (directory.DirectoryName == selectedList)
                 {
                     dataGridView1.DataSource = directory.MediaFiles;
-                } else
-                {
-                    dataGridView1.DataSource = null;
-                }
+                } 
             }
 
         }
@@ -141,6 +138,15 @@ namespace Media_Organiser
             pForm.ShowDialog();
 
            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                
+                dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+            }
         }
     }
 }
