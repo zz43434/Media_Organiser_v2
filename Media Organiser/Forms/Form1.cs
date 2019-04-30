@@ -27,7 +27,7 @@ namespace Media_Organiser
             if (result == DialogResult.OK)
             {
                 Environment.SpecialFolder root = folderBrowser.RootFolder;
-                filePaths = Directory.GetFiles(folderBrowser.SelectedPath, "*.pdf", SearchOption.AllDirectories);
+                filePaths = Directory.GetFiles(folderBrowser.SelectedPath, "*.jpg", SearchOption.AllDirectories);
 
                 DirectoryModel direct = new DirectoryModel();
 
@@ -50,26 +50,6 @@ namespace Media_Organiser
             }
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                fileInfoNameSelected.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-                fileInfoTypeSelected.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-                fileInfoPathSelected.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-            }
-        }
-
-
-        private void addPlaylistToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            createPlaylist();
-        }
-
-        private void addCategoryToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            createCategory();
-        }
 
         private void createDirectory(string directoryName)
         {
@@ -83,22 +63,25 @@ namespace Media_Organiser
             listViewLibrary.Items.Add(directory);
         }
 
-        private void createPlaylist()
+        public void createPlaylist(string name, List<MediaFileModel> playlistFiles)
         {
             ListViewItem playlist = new ListViewItem();
             PlaylistModel plist = new PlaylistModel();
 
-            plist.PlaylistName = "plat";
+            plist.PlaylistName = name;
             plist.MediaFiles = new List<MediaFileModel>();
 
-            playlist.Group = listViewLibrary.Groups[1];
+            foreach (MediaFileModel file in playlistFiles)
+            {
+                plist.MediaFiles.Add(file);
+            }
+
+            playlist.Group = listViewLibrary.Groups[0];
             playlist.Name = "New items";
-            playlist.Text = "HelloEW";
-            playlist.Selected = true;
-
-
-
+            playlist.Text = "New items";
+            
             listViewLibrary.Items.Add(playlist);
+
         }
 
         private void createCategory()
@@ -137,7 +120,7 @@ namespace Media_Organiser
 
             pForm.ShowDialog();
 
-           
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -147,6 +130,27 @@ namespace Media_Organiser
                 
                 dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
             }
+        }
+
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                fileInfoNameSelected.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                fileInfoTypeSelected.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+                fileInfoPathSelected.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+            }
+        }
+
+
+        private void addPlaylistToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void addCategoryToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            createCategory();
         }
     }
 }

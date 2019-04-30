@@ -20,14 +20,7 @@ namespace Media_Organiser.Models
 
         List<DirectoryModel> direc;
         List<MediaFileModel> addPlaylist = new List<MediaFileModel>();
-
         List<MediaFileModel> allMedia = new List<MediaFileModel>();
-
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-        }
 
         private void AddPlaylist_Load(object sender, EventArgs e)
         {
@@ -39,16 +32,33 @@ namespace Media_Organiser.Models
                 }
             }
             dataGridView1.DataSource = allMedia;
+            dataGridView2.DataSource = addPlaylist.ToArray();
+
+            dataGridView1.AutoGenerateColumns = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            MediaFileModel currentFile = dataGridView1.CurrentRow.DataBoundItem as MediaFileModel;
+            addPlaylist.Add(currentFile);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public void button1_Click(object sender, EventArgs e)
+        {
+
+            Form1 form = new Form1();
+
+            if (textBox1.Text.Length > 0 && addPlaylist != null)
+            {
+                form.createPlaylist(textBox1.Text, addPlaylist);
+            }
+
+            this.Close();
         }
     }
 }
