@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Media_Organiser.Models
 {
-    public class Playlist
+    public class PlaylistModel
     {
         public string PlaylistName { get; set; }
+        public List<MediaFileModel> MediaFiles { get; set; }
     }
 }

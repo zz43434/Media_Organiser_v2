@@ -17,8 +17,13 @@ namespace Media_Organiser.Models
             InitializeComponent();
         }
 
+
         private void button1_Click(object sender, EventArgs e)
         {
+            textBox1.Text = "hello";
+
+
+            this.Close();
         }
     }
 }

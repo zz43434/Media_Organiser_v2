@@ -28,44 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Directories", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Playlists", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Categories", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Playlists", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
-            "Imported Media"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("File types");
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("asdasdasd");
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("asdasdasd");
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("asdasdasd");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("File types");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("asdasdasd");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("asdasdasd");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("asdasdasd");
             this.label1 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listViewLibrary = new System.Windows.Forms.ListView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.importMediaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addPlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addPlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addPlaylistToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editPlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addCategoryToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.removeCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
             this.fileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fileType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.filePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fileComments = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.fileInfoNameLabel = new System.Windows.Forms.Label();
+            this.fileInfoNameSelected = new System.Windows.Forms.Label();
+            this.fileInfoTypeLabel = new System.Windows.Forms.Label();
+            this.fileInfoTypeSelected = new System.Windows.Forms.Label();
+            this.fileInfoPathLabel = new System.Windows.Forms.Label();
+            this.fileInfoPathSelected = new System.Windows.Forms.Label();
+            this.fileInfoCommentLabel = new System.Windows.Forms.Label();
+            this.fileInfoCommentSelected = new System.Windows.Forms.TextBox();
+            this.fileInfoCategoryLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -81,35 +80,40 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Library:";
             // 
-            // listView1
+            // listViewLibrary
             // 
+            this.listViewLibrary.AutoArrange = false;
+            listViewGroup1.Header = "Directories";
+            listViewGroup1.Name = "Directories";
+            listViewGroup1.Tag = "Directories";
+            listViewGroup2.Header = "Playlists";
+            listViewGroup2.Name = "Playlists";
+            listViewGroup2.Tag = "Playlists";
             listViewGroup3.Header = "Categories";
-            listViewGroup3.Name = "categories";
+            listViewGroup3.Name = "Categories";
             listViewGroup3.Tag = "Categories";
-            listViewGroup4.Header = "Playlists";
-            listViewGroup4.Name = "Playlists";
-            listViewGroup4.Tag = "Playlists";
-            this.listView1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup3,
-            listViewGroup4});
-            listViewItem6.StateImageIndex = 0;
-            listViewItem7.Group = listViewGroup3;
-            listViewItem8.Group = listViewGroup4;
-            listViewItem9.Group = listViewGroup4;
-            listViewItem10.Group = listViewGroup3;
-            listViewItem10.ToolTipText = "ad";
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem6,
-            listViewItem7,
-            listViewItem8,
-            listViewItem9,
-            listViewItem10});
-            this.listView1.Location = new System.Drawing.Point(16, 40);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(174, 398);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Tile;
+            this.listViewLibrary.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            listViewGroup1,
+            listViewGroup2,
+            listViewGroup3});
+            listViewItem1.Group = listViewGroup3;
+            listViewItem2.Group = listViewGroup1;
+            listViewItem3.Group = listViewGroup2;
+            listViewItem4.Group = listViewGroup3;
+            listViewItem4.ToolTipText = "ad";
+            this.listViewLibrary.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4});
+            this.listViewLibrary.Location = new System.Drawing.Point(16, 40);
+            this.listViewLibrary.MultiSelect = false;
+            this.listViewLibrary.Name = "listViewLibrary";
+            this.listViewLibrary.Size = new System.Drawing.Size(174, 398);
+            this.listViewLibrary.TabIndex = 1;
+            this.listViewLibrary.UseCompatibleStateImageBehavior = false;
+            this.listViewLibrary.View = System.Windows.Forms.View.Tile;
+            this.listViewLibrary.Click += new System.EventHandler(this.listViewLibrary_Click);
             // 
             // menuStrip1
             // 
@@ -131,6 +135,13 @@
             this.importMediaToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.importMediaToolStripMenuItem.Text = "Media";
             // 
+            // importToolStripMenuItem
+            // 
+            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.importToolStripMenuItem.Text = "Import ";
+            this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
+            // 
             // addPlaylistToolStripMenuItem
             // 
             this.addPlaylistToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -139,6 +150,20 @@
             this.addPlaylistToolStripMenuItem.Name = "addPlaylistToolStripMenuItem";
             this.addPlaylistToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.addPlaylistToolStripMenuItem.Text = "Playlists";
+            // 
+            // addPlaylistToolStripMenuItem1
+            // 
+            this.addPlaylistToolStripMenuItem1.Name = "addPlaylistToolStripMenuItem1";
+            this.addPlaylistToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.addPlaylistToolStripMenuItem1.Text = "Add Playlist";
+            this.addPlaylistToolStripMenuItem1.Click += new System.EventHandler(this.addPlaylistToolStripMenuItem1_Click);
+            // 
+            // editPlaylistToolStripMenuItem
+            // 
+            this.editPlaylistToolStripMenuItem.Name = "editPlaylistToolStripMenuItem";
+            this.editPlaylistToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editPlaylistToolStripMenuItem.Text = "Edit Playlist";
+            this.editPlaylistToolStripMenuItem.Click += new System.EventHandler(this.editPlaylistToolStripMenuItem_Click);
             // 
             // addCategoryToolStripMenuItem
             // 
@@ -149,39 +174,24 @@
             this.addCategoryToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
             this.addCategoryToolStripMenuItem.Text = "Categories";
             // 
-            // importToolStripMenuItem
-            // 
-            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.importToolStripMenuItem.Text = "Import ";
-            this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
-            // 
-            // addPlaylistToolStripMenuItem1
-            // 
-            this.addPlaylistToolStripMenuItem1.Name = "addPlaylistToolStripMenuItem1";
-            this.addPlaylistToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.addPlaylistToolStripMenuItem1.Text = "Add Playlist";
-            // 
-            // editPlaylistToolStripMenuItem
-            // 
-            this.editPlaylistToolStripMenuItem.Name = "editPlaylistToolStripMenuItem";
-            this.editPlaylistToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.editPlaylistToolStripMenuItem.Text = "Edit Playlist";
-            // 
             // addCategoryToolStripMenuItem1
             // 
             this.addCategoryToolStripMenuItem1.Name = "addCategoryToolStripMenuItem1";
-            this.addCategoryToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.addCategoryToolStripMenuItem1.Size = new System.Drawing.Size(168, 22);
             this.addCategoryToolStripMenuItem1.Text = "Add Category";
+            this.addCategoryToolStripMenuItem1.Click += new System.EventHandler(this.addCategoryToolStripMenuItem1_Click);
             // 
             // removeCategoryToolStripMenuItem
             // 
             this.removeCategoryToolStripMenuItem.Name = "removeCategoryToolStripMenuItem";
-            this.removeCategoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeCategoryToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.removeCategoryToolStripMenuItem.Text = "Remove Category";
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.fileName,
@@ -189,10 +199,38 @@
             this.filePath,
             this.fileComments});
             this.dataGridView1.Location = new System.Drawing.Point(197, 40);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(403, 398);
+            this.dataGridView1.RowTemplate.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(408, 398);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // fileName
+            // 
+            this.fileName.DataPropertyName = "Name";
+            this.fileName.HeaderText = "Name";
+            this.fileName.Name = "fileName";
+            // 
+            // fileType
+            // 
+            this.fileType.DataPropertyName = "Type";
+            this.fileType.HeaderText = "Type";
+            this.fileType.Name = "fileType";
+            // 
+            // filePath
+            // 
+            this.filePath.DataPropertyName = "Path";
+            this.filePath.HeaderText = "Path";
+            this.filePath.Name = "filePath";
+            // 
+            // fileComments
+            // 
+            this.fileComments.DataPropertyName = "Comment";
+            this.fileComments.HeaderText = "Comment";
+            this.fileComments.Name = "fileComments";
             // 
             // label2
             // 
@@ -202,26 +240,6 @@
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "File View:";
-            // 
-            // fileName
-            // 
-            this.fileName.HeaderText = "Name:";
-            this.fileName.Name = "fileName";
-            // 
-            // fileType
-            // 
-            this.fileType.HeaderText = "Type";
-            this.fileType.Name = "fileType";
-            // 
-            // filePath
-            // 
-            this.filePath.HeaderText = "Path";
-            this.filePath.Name = "filePath";
-            // 
-            // fileComments
-            // 
-            this.fileComments.HeaderText = "Comments";
-            this.fileComments.Name = "fileComments";
             // 
             // pictureBox1
             // 
@@ -253,17 +271,17 @@
             // 
             this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label6, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label7, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label8, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label9, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label10, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.fileInfoNameLabel, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.fileInfoNameSelected, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.fileInfoTypeLabel, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.fileInfoTypeSelected, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.fileInfoPathLabel, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.fileInfoPathSelected, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.fileInfoCommentLabel, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.fileInfoCommentSelected, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.fileInfoCategoryLabel, 0, 4);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(627, 224);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
@@ -275,84 +293,81 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(231, 130);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
-            // label3
+            // fileInfoNameLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Name:";
+            this.fileInfoNameLabel.AutoSize = true;
+            this.fileInfoNameLabel.Location = new System.Drawing.Point(3, 0);
+            this.fileInfoNameLabel.Name = "fileInfoNameLabel";
+            this.fileInfoNameLabel.Size = new System.Drawing.Size(38, 13);
+            this.fileInfoNameLabel.TabIndex = 0;
+            this.fileInfoNameLabel.Text = "Name:";
             // 
-            // label4
+            // fileInfoNameSelected
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(118, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "label4";
+            this.fileInfoNameSelected.AutoSize = true;
+            this.fileInfoNameSelected.Location = new System.Drawing.Point(118, 0);
+            this.fileInfoNameSelected.Name = "fileInfoNameSelected";
+            this.fileInfoNameSelected.Size = new System.Drawing.Size(0, 13);
+            this.fileInfoNameSelected.TabIndex = 1;
             // 
-            // label5
+            // fileInfoTypeLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 26);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 13);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Type:";
+            this.fileInfoTypeLabel.AutoSize = true;
+            this.fileInfoTypeLabel.Location = new System.Drawing.Point(3, 26);
+            this.fileInfoTypeLabel.Name = "fileInfoTypeLabel";
+            this.fileInfoTypeLabel.Size = new System.Drawing.Size(34, 13);
+            this.fileInfoTypeLabel.TabIndex = 2;
+            this.fileInfoTypeLabel.Text = "Type:";
             // 
-            // label6
+            // fileInfoTypeSelected
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(118, 26);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "label6";
+            this.fileInfoTypeSelected.AutoSize = true;
+            this.fileInfoTypeSelected.Location = new System.Drawing.Point(118, 26);
+            this.fileInfoTypeSelected.Name = "fileInfoTypeSelected";
+            this.fileInfoTypeSelected.Size = new System.Drawing.Size(0, 13);
+            this.fileInfoTypeSelected.TabIndex = 3;
             // 
-            // label7
+            // fileInfoPathLabel
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 52);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(32, 13);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "Path:";
+            this.fileInfoPathLabel.AutoSize = true;
+            this.fileInfoPathLabel.Location = new System.Drawing.Point(3, 52);
+            this.fileInfoPathLabel.Name = "fileInfoPathLabel";
+            this.fileInfoPathLabel.Size = new System.Drawing.Size(32, 13);
+            this.fileInfoPathLabel.TabIndex = 4;
+            this.fileInfoPathLabel.Text = "Path:";
             // 
-            // label8
+            // fileInfoPathSelected
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(118, 52);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "label8";
+            this.fileInfoPathSelected.AutoSize = true;
+            this.fileInfoPathSelected.Location = new System.Drawing.Point(118, 52);
+            this.fileInfoPathSelected.Name = "fileInfoPathSelected";
+            this.fileInfoPathSelected.Size = new System.Drawing.Size(0, 13);
+            this.fileInfoPathSelected.TabIndex = 5;
             // 
-            // label9
+            // fileInfoCommentLabel
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 78);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(56, 13);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "Comments";
+            this.fileInfoCommentLabel.AutoSize = true;
+            this.fileInfoCommentLabel.Location = new System.Drawing.Point(3, 78);
+            this.fileInfoCommentLabel.Name = "fileInfoCommentLabel";
+            this.fileInfoCommentLabel.Size = new System.Drawing.Size(56, 13);
+            this.fileInfoCommentLabel.TabIndex = 6;
+            this.fileInfoCommentLabel.Text = "Comments";
             // 
-            // textBox1
+            // fileInfoCommentSelected
             // 
-            this.textBox1.Location = new System.Drawing.Point(118, 81);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 7;
+            this.fileInfoCommentSelected.Location = new System.Drawing.Point(118, 81);
+            this.fileInfoCommentSelected.Name = "fileInfoCommentSelected";
+            this.fileInfoCommentSelected.Size = new System.Drawing.Size(100, 20);
+            this.fileInfoCommentSelected.TabIndex = 7;
             // 
-            // label10
+            // fileInfoCategoryLabel
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 104);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(52, 13);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "Category:";
+            this.fileInfoCategoryLabel.AutoSize = true;
+            this.fileInfoCategoryLabel.Location = new System.Drawing.Point(3, 104);
+            this.fileInfoCategoryLabel.Name = "fileInfoCategoryLabel";
+            this.fileInfoCategoryLabel.Size = new System.Drawing.Size(52, 13);
+            this.fileInfoCategoryLabel.TabIndex = 8;
+            this.fileInfoCategoryLabel.Text = "Category:";
             // 
             // Form1
             // 
@@ -365,7 +380,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.listViewLibrary);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -385,7 +400,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listViewLibrary;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem importMediaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addPlaylistToolStripMenuItem;
@@ -397,23 +412,23 @@
         private System.Windows.Forms.ToolStripMenuItem removeCategoryToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fileName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fileType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn filePath;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fileComments;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label fileInfoNameLabel;
+        private System.Windows.Forms.Label fileInfoNameSelected;
+        private System.Windows.Forms.Label fileInfoTypeLabel;
+        private System.Windows.Forms.Label fileInfoTypeSelected;
+        private System.Windows.Forms.Label fileInfoPathLabel;
+        private System.Windows.Forms.Label fileInfoPathSelected;
+        private System.Windows.Forms.Label fileInfoCommentLabel;
+        private System.Windows.Forms.TextBox fileInfoCommentSelected;
+        private System.Windows.Forms.Label fileInfoCategoryLabel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fileName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fileType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn filePath;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fileComments;
     }
 }
 

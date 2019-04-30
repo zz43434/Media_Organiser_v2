@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Media_Organiser.Models
 {
-    public class Category
+    public class DirectoryModel
     {
-        public string CategoryName { get; set; }
+        public string DirectoryName { get; set; }
+        public List<MediaFileModel> MediaFiles { get; set; }
     }
 }

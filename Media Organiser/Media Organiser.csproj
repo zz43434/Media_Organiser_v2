@@ -65,9 +65,10 @@
     <Compile Include="Forms\AddPlaylist.Designer.cs">
       <DependentUpon>AddPlaylist.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\MediaFile.cs" />
-    <Compile Include="Models\Playlist.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\DirectoryModel.cs" />
+    <Compile Include="Models\MediaFileModel.cs" />
+    <Compile Include="Models\PlaylistModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Form1.resx">

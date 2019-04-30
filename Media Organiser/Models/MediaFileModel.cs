@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Media_Organiser.Models
 {
-    public class MediaFile
+    public class MediaFileModel
     {
         public string Name { get; set; }
         public string Type { get; set; }
