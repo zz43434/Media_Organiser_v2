@@ -13,10 +13,10 @@ namespace Media_Organiser
             InitializeComponent();
         }
 
-        List<DirectoryModel> directories = new List<DirectoryModel>();
+        public List<DirectoryModel> directories = new List<DirectoryModel>();
         string[] filePaths;
-        List<PlaylistModel> playlists = new List<PlaylistModel>();
-        List<CategoryModel> categories = new List<CategoryModel>();
+        public List<PlaylistModel> playlists = new List<PlaylistModel>();
+        public List<CategoryModel> categories = new List<CategoryModel>();
 
         private void importToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -133,7 +133,7 @@ namespace Media_Organiser
 
         private void editPlaylistToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddPlaylist pForm = new AddPlaylist();
+            AddPlaylist pForm = new AddPlaylist(directories);
 
             pForm.ShowDialog();
 

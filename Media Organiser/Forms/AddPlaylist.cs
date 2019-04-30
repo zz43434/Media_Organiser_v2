@@ -12,18 +12,43 @@ namespace Media_Organiser.Models
 {
     public partial class AddPlaylist : Form
     {
-        public AddPlaylist()
+        public AddPlaylist(List<DirectoryModel> directories)
         {
             InitializeComponent();
+            direc = directories;
         }
+
+        List<DirectoryModel> direc;
+        List<MediaFileModel> addPlaylist = new List<MediaFileModel>();
+
+        List<MediaFileModel> allMedia = new List<MediaFileModel>();
 
 
         private void button1_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "hello";
+            
+        }
 
+        private void AddPlaylist_Load(object sender, EventArgs e)
+        {
+            foreach (DirectoryModel director in direc)
+            {
+                foreach (MediaFileModel media in director.MediaFiles)
+                {
+                    allMedia.Add(media);
+                }
+            }
+            dataGridView1.DataSource = allMedia;
+        }
 
-            this.Close();
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
