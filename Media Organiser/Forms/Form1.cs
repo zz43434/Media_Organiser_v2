@@ -23,7 +23,7 @@ namespace Media_Organiser
         {
             FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
             folderBrowser.ShowNewFolderButton = true;
-            // Show the FolderBrowserDialog.  
+
             DialogResult result = folderBrowser.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -56,7 +56,6 @@ namespace Media_Organiser
             ListViewItem directory = new ListViewItem();
 
             directory.Group = listViewLibrary.Groups[0];
-            directory.Name = directoryName;
             directory.Text = directoryName;
             directory.Selected = true;
 
@@ -77,7 +76,6 @@ namespace Media_Organiser
             }
 
             playlist.Group = listViewLibrary.Groups[1];
-            playlist.Name = "New items";
             playlist.Text = name;
             playlist.Selected = true;
 
@@ -132,12 +130,8 @@ namespace Media_Organiser
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                fileInfoNameSelected.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-                fileInfoTypeSelected.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-                fileInfoPathSelected.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-            }
+           
+
         }
 
 
@@ -175,8 +169,8 @@ namespace Media_Organiser
         {
             ContextMenuStrip menu = new ContextMenuStrip();
 
-            menu.Items.Add("Delete");
             menu.Items.Add("Edit");
+            menu.Items.Add("Delete");
             menu.ItemClicked += new ToolStripItemClickedEventHandler(listViewMenu_ItemClicked);
 
             if (e.Button == MouseButtons.Right)
@@ -240,8 +234,47 @@ namespace Media_Organiser
                         playlist.MediaFiles.Add(file);
                     }
                     item.Selected = true;
-                    dataGridView1.Refresh();
                 }
+            }
+        }
+
+        private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                fileInfoNameSelected.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                fileInfoTypeSelected.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+                fileInfoPathSelected.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+            }
+
+            ContextMenuStrip menu = new ContextMenuStrip();
+
+            menu.Items.Add("Add Comment");
+            menu.Items.Add("Delete");
+            menu.ItemClicked += new ToolStripItemClickedEventHandler(dataGridViewMenu_ItemClicked);
+
+            if (e.Button == MouseButtons.Right)
+            {
+                menu.Show(Cursor.Position);
+            }
+        }
+
+        private void dataGridViewMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+
+            }
+
+            ListViewItem selectedList = listViewLibrary.SelectedItems[0];
+            switch (e.ClickedItem.ToString())
+            {
+                case "Delete":
+                    deleteListViewItem(selectedList);
+                    break;
+                case "Edit":
+                    editListViewItem(selectedList);
+                    break;
             }
         }
     }

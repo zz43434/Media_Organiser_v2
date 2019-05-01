@@ -21,6 +21,7 @@ namespace Media_Organiser.Models
             {
                 addPlaylist.Add(media);
             }
+
             playlistName = playlist.PlaylistName;
             textBox1.Text = playlistName;
         }
@@ -40,11 +41,20 @@ namespace Media_Organiser.Models
                     allMedia.Add(media);
                 }
             }
+
+            if (addPlaylist.Count > 0)
+            {
+                foreach(MediaFileModel media in addPlaylist)
+                {
+                    if (allMedia.Contains(media))
+                    {
+                        allMedia.Remove(media);
+                    }
+                }
+            }
+
             dataGridView1.DataSource = allMedia;
             dataGridView2.DataSource = addPlaylist;
-            
-
-            dataGridView1.AutoGenerateColumns = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
