@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Directories", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Playlists", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Categories", System.Windows.Forms.HorizontalAlignment.Left);
@@ -38,10 +39,8 @@
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addPlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addPlaylistToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.editPlaylistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addCategoryToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.fileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fileType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,6 +60,7 @@
             this.fileInfoCommentLabel = new System.Windows.Forms.Label();
             this.fileInfoCommentSelected = new System.Windows.Forms.TextBox();
             this.fileInfoCategoryLabel = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -100,6 +100,7 @@
             this.listViewLibrary.UseCompatibleStateImageBehavior = false;
             this.listViewLibrary.View = System.Windows.Forms.View.Tile;
             this.listViewLibrary.Click += new System.EventHandler(this.listViewLibrary_Click);
+            this.listViewLibrary.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listViewLibrary_MouseDown);
             // 
             // menuStrip1
             // 
@@ -131,8 +132,7 @@
             // addPlaylistToolStripMenuItem
             // 
             this.addPlaylistToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addPlaylistToolStripMenuItem1,
-            this.editPlaylistToolStripMenuItem});
+            this.addPlaylistToolStripMenuItem1});
             this.addPlaylistToolStripMenuItem.Name = "addPlaylistToolStripMenuItem";
             this.addPlaylistToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.addPlaylistToolStripMenuItem.Text = "Playlists";
@@ -144,18 +144,10 @@
             this.addPlaylistToolStripMenuItem1.Text = "Add Playlist";
             this.addPlaylistToolStripMenuItem1.Click += new System.EventHandler(this.addPlaylistToolStripMenuItem1_Click);
             // 
-            // editPlaylistToolStripMenuItem
-            // 
-            this.editPlaylistToolStripMenuItem.Name = "editPlaylistToolStripMenuItem";
-            this.editPlaylistToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.editPlaylistToolStripMenuItem.Text = "Edit Playlist";
-            this.editPlaylistToolStripMenuItem.Click += new System.EventHandler(this.editPlaylistToolStripMenuItem_Click);
-            // 
             // addCategoryToolStripMenuItem
             // 
             this.addCategoryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addCategoryToolStripMenuItem1,
-            this.removeCategoryToolStripMenuItem});
+            this.addCategoryToolStripMenuItem1});
             this.addCategoryToolStripMenuItem.Name = "addCategoryToolStripMenuItem";
             this.addCategoryToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
             this.addCategoryToolStripMenuItem.Text = "Categories";
@@ -163,15 +155,9 @@
             // addCategoryToolStripMenuItem1
             // 
             this.addCategoryToolStripMenuItem1.Name = "addCategoryToolStripMenuItem1";
-            this.addCategoryToolStripMenuItem1.Size = new System.Drawing.Size(168, 22);
+            this.addCategoryToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
             this.addCategoryToolStripMenuItem1.Text = "Add Category";
             this.addCategoryToolStripMenuItem1.Click += new System.EventHandler(this.addCategoryToolStripMenuItem1_Click);
-            // 
-            // removeCategoryToolStripMenuItem
-            // 
-            this.removeCategoryToolStripMenuItem.Name = "removeCategoryToolStripMenuItem";
-            this.removeCategoryToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.removeCategoryToolStripMenuItem.Text = "Remove Category";
             // 
             // dataGridView1
             // 
@@ -356,6 +342,11 @@
             this.fileInfoCategoryLabel.TabIndex = 8;
             this.fileInfoCategoryLabel.Text = "Category:";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -393,9 +384,7 @@
         private System.Windows.Forms.ToolStripMenuItem addCategoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addPlaylistToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem editPlaylistToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addCategoryToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem removeCategoryToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -416,6 +405,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn filePath;
         private System.Windows.Forms.DataGridViewTextBoxColumn fileComments;
         public System.Windows.Forms.ListView listViewLibrary;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
 

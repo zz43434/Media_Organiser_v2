@@ -1,6 +1,7 @@
 ﻿using Media_Organiser.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 
@@ -27,7 +28,7 @@ namespace Media_Organiser
             if (result == DialogResult.OK)
             {
                 Environment.SpecialFolder root = folderBrowser.RootFolder;
-                filePaths = Directory.GetFiles(folderBrowser.SelectedPath, "*.jpg", SearchOption.AllDirectories);
+                filePaths = Directory.GetFiles(folderBrowser.SelectedPath, "*.pdf", SearchOption.AllDirectories);
 
                 DirectoryModel direct = new DirectoryModel();
 
@@ -44,12 +45,11 @@ namespace Media_Organiser
 
                     direct.MediaFiles.Add(importFile);
                 }
-
                 directories.Add(direct);
                 createDirectory(folderBrowser.SelectedPath);
+                dataGridView1.DataSource = direct.MediaFiles;
             }
         }
-
 
         private void createDirectory(string directoryName)
         {
@@ -63,7 +63,7 @@ namespace Media_Organiser
             listViewLibrary.Items.Add(directory);
         }
 
-        public void createPlaylist(string name, List<MediaFileModel> playlistFiles)
+        public void createPlaylist(string name, BindingList<MediaFileModel> playlistFiles)
         {
             ListViewItem playlist = new ListViewItem();
             PlaylistModel plist = new PlaylistModel();
@@ -76,12 +76,83 @@ namespace Media_Organiser
                 plist.MediaFiles.Add(file);
             }
 
-            playlist.Group = listViewLibrary.Groups[0];
+            playlist.Group = listViewLibrary.Groups[1];
             playlist.Name = "New items";
-            playlist.Text = "New items";
-            
-            listViewLibrary.Items.Add(playlist);
+            playlist.Text = name;
+            playlist.Selected = true;
 
+            listViewLibrary.Items.Add(playlist);
+            playlists.Add(plist);
+
+            dataGridView1.DataSource = plist.MediaFiles;
+
+        }
+
+        private void listViewLibrary_Click(object sender, EventArgs e)
+        {
+            string selectedList =  listViewLibrary.SelectedItems[0].Text;
+
+            foreach(DirectoryModel directory in directories)
+            {
+                if (directory.DirectoryName == selectedList)
+                {
+                    dataGridView1.DataSource = directory.MediaFiles;
+                } 
+            }
+
+            foreach(PlaylistModel playlist in playlists)
+            {
+                if (playlist.PlaylistName == selectedList)
+                {
+                    dataGridView1.DataSource = playlist.MediaFiles;
+                }
+            }
+
+            foreach(CategoryModel category in categories)
+            {
+                if (category.CategoryName == selectedList)
+                {
+                    dataGridView1.DataSource = category.CategoryFiles;
+                }
+            }
+        }
+
+        private void editPlaylistToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                fileInfoNameSelected.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                fileInfoTypeSelected.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+                fileInfoPathSelected.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+            }
+        }
+
+
+        private void addPlaylistToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AddPlaylist pForm = new AddPlaylist(directories);
+
+            pForm.ShowDialog();
+
+            createPlaylist(pForm.playlistName, pForm.addPlaylist);
+        }
+
+        private void addCategoryToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            createCategory();
         }
 
         private void createCategory()
@@ -100,57 +171,78 @@ namespace Media_Organiser
             listViewLibrary.Items.Add(category);
         }
 
-        private void listViewLibrary_Click(object sender, EventArgs e)
+        private void listViewLibrary_MouseDown(object sender, MouseEventArgs e)
         {
-            string selectedList =  listViewLibrary.SelectedItems[0].Text;
+            ContextMenuStrip menu = new ContextMenuStrip();
 
-            foreach(DirectoryModel directory in directories)
+            menu.Items.Add("Delete");
+            menu.Items.Add("Edit");
+            menu.ItemClicked += new ToolStripItemClickedEventHandler(listViewMenu_ItemClicked);
+
+            if (e.Button == MouseButtons.Right)
             {
-                if (directory.DirectoryName == selectedList)
+                menu.Show(Cursor.Position);
+            }
+        }
+
+        private void listViewMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            ListViewItem selectedList = listViewLibrary.SelectedItems[0];
+            switch (e.ClickedItem.ToString())
+            {
+                case "Delete":
+                    deleteListViewItem(selectedList);
+                    break;
+                case "Edit":
+                    editListViewItem(selectedList);
+                    break;
+            }
+
+        }
+
+        private void deleteListViewItem(ListViewItem item)
+        {
+            foreach(DirectoryModel direc in directories.ToArray())
+            {
+                if(direc.DirectoryName == item.Name)
                 {
-                    dataGridView1.DataSource = directory.MediaFiles;
-                } 
+                    directories.Remove(direc);
+                    listViewLibrary.Items.Remove(item);
+                }
             }
 
-        }
-
-        private void editPlaylistToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AddPlaylist pForm = new AddPlaylist(directories);
-
-            pForm.ShowDialog();
-
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count > 0)
+            foreach(PlaylistModel playlist in playlists.ToArray())
             {
-                
-                dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+                if(playlist.PlaylistName == item.Text)
+                {
+                    playlists.Remove(playlist);
+                    listViewLibrary.Items.Remove(item);
+                }
             }
+            dataGridView1.DataSource = null;
         }
 
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void editListViewItem(ListViewItem item)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            foreach (PlaylistModel playlist in playlists.ToArray())
             {
-                fileInfoNameSelected.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-                fileInfoTypeSelected.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-                fileInfoPathSelected.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+                if (playlist.PlaylistName == item.Text)
+                {
+                    AddPlaylist form = new AddPlaylist(playlist, directories);
+                    form.ShowDialog();
+
+                    playlist.PlaylistName = form.playlistName;
+                    item.Text = form.playlistName;
+                    playlist.MediaFiles.RemoveRange(0, playlist.MediaFiles.Count);
+
+                    foreach(MediaFileModel file in form.addPlaylist)
+                    {
+                        playlist.MediaFiles.Add(file);
+                    }
+                    item.Selected = true;
+                    dataGridView1.Refresh();
+                }
             }
-        }
-
-
-        private void addPlaylistToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void addCategoryToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            createCategory();
         }
     }
 }
