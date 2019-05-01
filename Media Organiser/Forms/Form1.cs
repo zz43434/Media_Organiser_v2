@@ -1,4 +1,6 @@
-﻿using Media_Organiser.Forms;
+﻿using Media_Organiser.Data;
+using Media_Organiser.Forms;
+using Media_Organiser.Logic;
 using Media_Organiser.Models;
 using System;
 using System.Collections.Generic;
@@ -13,6 +15,7 @@ namespace Media_Organiser
         public Form1()
         {
             InitializeComponent();
+
         }
 
         public List<DirectoryModel> directories = new List<DirectoryModel>();
@@ -29,7 +32,18 @@ namespace Media_Organiser
             if (result == DialogResult.OK)
             {
                 Environment.SpecialFolder root = folderBrowser.RootFolder;
-                filePaths = Directory.GetFiles(folderBrowser.SelectedPath, "*.jpg", SearchOption.AllDirectories);
+                try
+                {
+                    filePaths = Directory.GetFiles(folderBrowser.SelectedPath, "*.jpg", SearchOption.AllDirectories);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+                Directories.createDirectorys(filePaths, "ca");
+
+                ConfigData.getDirectories();
 
                 DirectoryModel direct = new DirectoryModel();
 
@@ -147,6 +161,7 @@ namespace Media_Organiser
             category.Text = newCategory.categoryName;
             category.Selected = true;
 
+            categories.Add(ctg);
             listViewLibrary.Items.Add(category);
         }
 
@@ -197,6 +212,16 @@ namespace Media_Organiser
                     listViewLibrary.Items.Remove(item);
                 }
             }
+
+            foreach(CategoryModel category in categories.ToArray())
+            {
+                if(category.CategoryName == item.Text)
+                {
+                    categories.Remove(category);
+                    listViewLibrary.Items.Remove(item);
+                }
+            }
+
             dataGridView1.DataSource = null;
         }
 
