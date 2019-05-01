@@ -12,5 +12,6 @@ namespace Media_Organiser.Models
         public string Type { get; set; }
         public string Path { get; set; }
         public string Comment { get; set; }
+        public CategoryModel Category { get; set; }
     }
 }

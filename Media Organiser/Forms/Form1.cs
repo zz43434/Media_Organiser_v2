@@ -29,12 +29,12 @@ namespace Media_Organiser
             if (result == DialogResult.OK)
             {
                 Environment.SpecialFolder root = folderBrowser.RootFolder;
-                filePaths = Directory.GetFiles(folderBrowser.SelectedPath, "*.pdf", SearchOption.AllDirectories);
+                filePaths = Directory.GetFiles(folderBrowser.SelectedPath, "*.jpg", SearchOption.AllDirectories);
 
                 DirectoryModel direct = new DirectoryModel();
 
                 direct.DirectoryName = folderBrowser.SelectedPath;
-                direct.MediaFiles = new List<MediaFileModel>();
+                direct.MediaFiles = new BindingList<MediaFileModel>();
 
                 for (var i = 0; i < filePaths.Length; i++)
                 {
@@ -58,6 +58,7 @@ namespace Media_Organiser
 
             directory.Group = listViewLibrary.Groups[0];
             directory.Text = directoryName;
+            directory.Name = directoryName;
             directory.Selected = true;
 
             listViewLibrary.Items.Add(directory);
@@ -107,13 +108,7 @@ namespace Media_Organiser
                 }
             }
 
-            foreach(CategoryModel category in categories)
-            {
-                if (category.CategoryName == selectedList)
-                {
-                    dataGridView1.DataSource = category.CategoryFiles;
-                }
-            }
+            
         }
 
         private void editPlaylistToolStripMenuItem_Click(object sender, EventArgs e)
@@ -155,12 +150,15 @@ namespace Media_Organiser
             ListViewItem category = new ListViewItem();
             CategoryModel ctg = new CategoryModel();
 
-            ctg.CategoryName = "ctg as";
-            ctg.CategoryFiles = new List<MediaFileModel>();
+            CreateCategory newCategory = new CreateCategory();
+
+            newCategory.ShowDialog();
+
+            ctg.CategoryName = newCategory.categoryName;
 
             category.Group = listViewLibrary.Groups[2];
-            category.Name = "New items";
-            category.Text = "HelloEW";
+            category.Name = newCategory.categoryName;
+            category.Text = newCategory.categoryName;
             category.Selected = true;
 
             listViewLibrary.Items.Add(category);
@@ -192,7 +190,6 @@ namespace Media_Organiser
                     editListViewItem(selectedList);
                     break;
             }
-
         }
 
         private void deleteListViewItem(ListViewItem item)
@@ -219,7 +216,7 @@ namespace Media_Organiser
 
         private void editListViewItem(ListViewItem item)
         {
-            foreach (PlaylistModel playlist in playlists.ToArray())
+            foreach (PlaylistModel playlist in playlists)
             {
                 if (playlist.PlaylistName == item.Text)
                 {
@@ -235,6 +232,7 @@ namespace Media_Organiser
                         playlist.MediaFiles.Add(file);
                     }
                     item.Selected = true;
+                    dataGridView1.Refresh();
                 }
             }
         }
@@ -255,6 +253,7 @@ namespace Media_Organiser
             ContextMenuStrip menu = new ContextMenuStrip();
 
             menu.Items.Add("Add Comment");
+            menu.Items.Add("Add Category");
             menu.Items.Add("Delete");
             menu.ItemClicked += new ToolStripItemClickedEventHandler(dataGridViewMenu_ItemClicked);
 
@@ -273,11 +272,21 @@ namespace Media_Organiser
             {
                 case "Delete":
                     deleteListMediaItem(selectedList);
+                    dataGridView1.Refresh();
                     break;
                 case "Add Comment":
                     editListMediaItem(file);
+                    dataGridView1.Refresh();
+                    break;
+                case "Add Category":
+                    addCategoryMediaItem(file);
                     break;
             }
+        }
+
+        private void addCategoryMediaItem(MediaFileModel file)
+        {
+            throw new NotImplementedException();
         }
 
         private void editListMediaItem(MediaFileModel file)
@@ -291,7 +300,8 @@ namespace Media_Organiser
 
         private void deleteListMediaItem(ListViewItem selectedList)
         {
-            throw new NotImplementedException();
+            MediaFileModel file = dataGridView1.CurrentRow.DataBoundItem as MediaFileModel;
+            
         }
     }
 }

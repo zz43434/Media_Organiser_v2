@@ -53,6 +53,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AddCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddCategory.Designer.cs">
+      <DependentUpon>AddCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CreateCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateCategory.Designer.cs">
+      <DependentUpon>CreateCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AddComment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,11 +77,11 @@
     <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddPlaylist.cs">
+    <Compile Include="Forms\CreatePlaylist.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddPlaylist.Designer.cs">
-      <DependentUpon>AddPlaylist.cs</DependentUpon>
+    <Compile Include="Forms\CreatePlaylist.Designer.cs">
+      <DependentUpon>CreatePlaylist.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\DirectoryModel.cs" />
@@ -77,14 +89,20 @@
     <Compile Include="Models\PlaylistModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\AddCategory.resx">
+      <DependentUpon>AddCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreateCategory.resx">
+      <DependentUpon>CreateCategory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddComment.resx">
       <DependentUpon>AddComment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddPlaylist.resx">
-      <DependentUpon>AddPlaylist.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CreatePlaylist.resx">
+      <DependentUpon>CreatePlaylist.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

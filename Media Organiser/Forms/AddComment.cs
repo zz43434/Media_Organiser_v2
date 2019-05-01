@@ -19,6 +19,10 @@ namespace Media_Organiser.Forms
             label2.Text = file.Name;
             label4.Text = file.Type;
             label6.Text = file.Path;
+            if(file.Comment != "")
+            {
+                textBox1.Text = file.Comment;
+            }
         }
 
         public string Comment = "";

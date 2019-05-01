@@ -42,14 +42,7 @@
             this.addCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addCategoryToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.fileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fileType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.filePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fileComments = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.fileInfoNameLabel = new System.Windows.Forms.Label();
             this.fileInfoNameSelected = new System.Windows.Forms.Label();
@@ -59,11 +52,15 @@
             this.fileInfoPathSelected = new System.Windows.Forms.Label();
             this.fileInfoCommentLabel = new System.Windows.Forms.Label();
             this.fileInfoCategoryLabel = new System.Windows.Forms.Label();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.fileInfoComment = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.fileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fileType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.filePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fileComments = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,7 +92,7 @@
             this.listViewLibrary.Location = new System.Drawing.Point(16, 40);
             this.listViewLibrary.MultiSelect = false;
             this.listViewLibrary.Name = "listViewLibrary";
-            this.listViewLibrary.Size = new System.Drawing.Size(174, 398);
+            this.listViewLibrary.Size = new System.Drawing.Size(282, 398);
             this.listViewLibrary.TabIndex = 1;
             this.listViewLibrary.UseCompatibleStateImageBehavior = false;
             this.listViewLibrary.View = System.Windows.Forms.View.Tile;
@@ -110,7 +107,7 @@
             this.addCategoryToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(883, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1059, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -170,76 +167,29 @@
             this.fileType,
             this.filePath,
             this.fileComments});
-            this.dataGridView1.Location = new System.Drawing.Point(197, 40);
-            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Location = new System.Drawing.Point(304, 40);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(408, 398);
+            this.dataGridView1.ShowCellErrors = false;
+            this.dataGridView1.ShowCellToolTips = false;
+            this.dataGridView1.ShowEditingIcon = false;
+            this.dataGridView1.ShowRowErrors = false;
+            this.dataGridView1.Size = new System.Drawing.Size(506, 398);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
             // 
-            // fileName
-            // 
-            this.fileName.DataPropertyName = "Name";
-            this.fileName.HeaderText = "Name";
-            this.fileName.Name = "fileName";
-            // 
-            // fileType
-            // 
-            this.fileType.DataPropertyName = "Type";
-            this.fileType.HeaderText = "Type";
-            this.fileType.Name = "fileType";
-            // 
-            // filePath
-            // 
-            this.filePath.DataPropertyName = "Path";
-            this.filePath.HeaderText = "Path";
-            this.filePath.Name = "filePath";
-            // 
-            // fileComments
-            // 
-            this.fileComments.DataPropertyName = "Comment";
-            this.fileComments.HeaderText = "Comment";
-            this.fileComments.Name = "fileComments";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(197, 24);
+            this.label2.Location = new System.Drawing.Point(301, 24);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "File View:";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(627, 40);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(231, 178);
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(627, 415);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(708, 415);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Remove";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -256,7 +206,7 @@
             this.tableLayoutPanel1.Controls.Add(this.fileInfoCommentLabel, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.fileInfoCategoryLabel, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.fileInfoComment, 1, 3);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(627, 224);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(822, 40);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -336,11 +286,6 @@
             this.fileInfoCategoryLabel.TabIndex = 8;
             this.fileInfoCategoryLabel.Text = "Category:";
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
             // fileInfoComment
             // 
             this.fileInfoComment.AutoSize = true;
@@ -349,15 +294,55 @@
             this.fileInfoComment.Size = new System.Drawing.Size(0, 13);
             this.fileInfoComment.TabIndex = 9;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(819, 24);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Details:";
+            // 
+            // fileName
+            // 
+            this.fileName.DataPropertyName = "Name";
+            this.fileName.HeaderText = "Name";
+            this.fileName.Name = "fileName";
+            this.fileName.ReadOnly = true;
+            // 
+            // fileType
+            // 
+            this.fileType.DataPropertyName = "Type";
+            this.fileType.HeaderText = "Type";
+            this.fileType.Name = "fileType";
+            this.fileType.ReadOnly = true;
+            // 
+            // filePath
+            // 
+            this.filePath.DataPropertyName = "Path";
+            this.filePath.HeaderText = "Path";
+            this.filePath.Name = "filePath";
+            this.filePath.ReadOnly = true;
+            // 
+            // fileComments
+            // 
+            this.fileComments.DataPropertyName = "Comment";
+            this.fileComments.HeaderText = "Comment";
+            this.fileComments.Name = "fileComments";
+            this.fileComments.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(883, 450);
+            this.ClientSize = new System.Drawing.Size(1059, 450);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.listViewLibrary);
@@ -369,7 +354,6 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -389,9 +373,6 @@
         private System.Windows.Forms.ToolStripMenuItem addCategoryToolStripMenuItem1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label fileInfoNameLabel;
         private System.Windows.Forms.Label fileInfoNameSelected;
@@ -401,13 +382,14 @@
         private System.Windows.Forms.Label fileInfoPathSelected;
         private System.Windows.Forms.Label fileInfoCommentLabel;
         private System.Windows.Forms.Label fileInfoCategoryLabel;
+        public System.Windows.Forms.ListView listViewLibrary;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Label fileInfoComment;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn fileName;
         private System.Windows.Forms.DataGridViewTextBoxColumn fileType;
         private System.Windows.Forms.DataGridViewTextBoxColumn filePath;
         private System.Windows.Forms.DataGridViewTextBoxColumn fileComments;
-        public System.Windows.Forms.ListView listViewLibrary;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.Label fileInfoComment;
     }
 }
 

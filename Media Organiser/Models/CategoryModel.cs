@@ -9,6 +9,5 @@ namespace Media_Organiser.Models
     public class CategoryModel
     {
         public string CategoryName { get; set; }
-        public List<MediaFileModel> CategoryFiles { get; set; }
     }
 }
