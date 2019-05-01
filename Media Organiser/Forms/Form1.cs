@@ -1,4 +1,5 @@
-﻿using Media_Organiser.Models;
+﻿using Media_Organiser.Forms;
+using Media_Organiser.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -245,6 +246,10 @@ namespace Media_Organiser
                 fileInfoNameSelected.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
                 fileInfoTypeSelected.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
                 fileInfoPathSelected.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+                if (dataGridView1.SelectedRows[0].Cells[3].Value != null)
+                {
+                    fileInfoComment.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
+                }
             }
 
             ContextMenuStrip menu = new ContextMenuStrip();
@@ -261,21 +266,32 @@ namespace Media_Organiser
 
         private void dataGridViewMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-
-            }
+            MediaFileModel file = dataGridView1.CurrentRow.DataBoundItem as MediaFileModel;
 
             ListViewItem selectedList = listViewLibrary.SelectedItems[0];
             switch (e.ClickedItem.ToString())
             {
                 case "Delete":
-                    deleteListViewItem(selectedList);
+                    deleteListMediaItem(selectedList);
                     break;
-                case "Edit":
-                    editListViewItem(selectedList);
+                case "Add Comment":
+                    editListMediaItem(file);
                     break;
             }
+        }
+
+        private void editListMediaItem(MediaFileModel file)
+        {
+
+            AddComment form = new AddComment(file);
+            form.ShowDialog();
+
+            file.Comment = form.Comment;
+        }
+
+        private void deleteListMediaItem(ListViewItem selectedList)
+        {
+            throw new NotImplementedException();
         }
     }
 }

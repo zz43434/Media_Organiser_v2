@@ -20,5 +20,16 @@ namespace Media_Organiser.Forms
             label4.Text = file.Type;
             label6.Text = file.Path;
         }
+
+        public string Comment = "";
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(textBox1.Text != "")
+            {
+                Comment = textBox1.Text;
+                this.Close();
+            }
+        }
     }
 }
