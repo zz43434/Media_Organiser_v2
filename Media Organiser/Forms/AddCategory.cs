@@ -13,7 +13,7 @@ namespace Media_Organiser.Forms
 {
     public partial class AddCategory : Form
     {
-        public AddCategory(MediaFileModel file)
+        public AddCategory(MediaFileModel file, List<string> categories)
         {
             InitializeComponent();
             label3.Text = file.Name;
@@ -27,19 +27,24 @@ namespace Media_Organiser.Forms
             {
                 label11.Text = file.Category.ToString();
             }
-            
-
+            listBox1.DataSource = categories;
         }
 
-        public CategoryModel Category { get; set; }
+        public CategoryModel Category = new CategoryModel();
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (listBox1.SelectedItem != null)
             {
-                Category = listBox1.SelectedItem as CategoryModel;
+                Category.CategoryName = listBox1.SelectedValue.ToString();
                 this.Close();
             }
+        }
+
+        private void listBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            Category.CategoryName = listBox1.SelectedValue.ToString();
+            label11.Text = listBox1.SelectedItem.ToString();
         }
     }
 }

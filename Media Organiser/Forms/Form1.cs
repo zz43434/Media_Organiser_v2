@@ -107,13 +107,6 @@ namespace Media_Organiser
                     dataGridView1.DataSource = playlist.MediaFiles;
                 }
             }
-
-            
-        }
-
-        private void editPlaylistToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -123,13 +116,6 @@ namespace Media_Organiser
                 dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
             }
         }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-
-        }
-
 
         private void addPlaylistToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -286,7 +272,17 @@ namespace Media_Organiser
 
         private void addCategoryMediaItem(MediaFileModel file)
         {
-            throw new NotImplementedException();
+            List<string> categoryList = new List<string>();
+
+            foreach(ListViewItem item in listViewLibrary.Groups[2].Items)
+            {
+                categoryList.Add(item.Text);
+            }
+            AddCategory categoryForm = new AddCategory(file, categoryList);
+            categoryForm.ShowDialog();
+
+            file.Category = categoryForm.Category.CategoryName;
+            dataGridView1.Refresh();
         }
 
         private void editListMediaItem(MediaFileModel file)

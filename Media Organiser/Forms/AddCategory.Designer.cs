@@ -61,6 +61,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(251, 225);
             this.listBox1.TabIndex = 1;
+            this.listBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDown);
             // 
             // button1
             // 
@@ -184,9 +185,8 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(103, 156);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(41, 13);
+            this.label11.Size = new System.Drawing.Size(0, 13);
             this.label11.TabIndex = 9;
-            this.label11.Text = "label11";
             // 
             // AddCategory
             // 
