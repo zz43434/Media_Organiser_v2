@@ -30,7 +30,7 @@ namespace Media_Organiser.Models
         public List<DirectoryModel> direc;
         public BindingList<MediaFileModel> addPlaylist = new BindingList<MediaFileModel>();
         public BindingList<MediaFileModel> allMedia = new BindingList<MediaFileModel>();
-        public string playlistName = "";
+        public string playlistName;
 
         private void AddPlaylist_Load(object sender, EventArgs e)
         {

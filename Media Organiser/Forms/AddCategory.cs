@@ -30,20 +30,20 @@ namespace Media_Organiser.Forms
             listBox1.DataSource = categories;
         }
 
-        public CategoryModel Category = new CategoryModel();
+        public CategoryModel Category;
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (listBox1.SelectedItem != null)
             {
-                Category.CategoryName = listBox1.SelectedValue.ToString();
+                Category = new CategoryModel(listBox1.SelectedValue.ToString());
                 this.Close();
             }
         }
 
         private void listBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            Category.CategoryName = listBox1.SelectedValue.ToString();
+            Category = new CategoryModel(listBox1.SelectedValue.ToString());
             label11.Text = listBox1.SelectedItem.ToString();
         }
     }

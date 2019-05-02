@@ -10,5 +10,11 @@ namespace Media_Organiser.Models
     {
         public string PlaylistName { get; set; }
         public List<MediaFileModel> MediaFiles { get; set; }
+
+        public PlaylistModel(string name, List<MediaFileModel> files)
+        {
+            PlaylistName = name;
+            MediaFiles = files; 
+        }
     }
 }

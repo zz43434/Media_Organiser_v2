@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Directories", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Playlists", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Categories", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Directories", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Playlists", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Categories", System.Windows.Forms.HorizontalAlignment.Left);
             this.label1 = new System.Windows.Forms.Label();
             this.listViewLibrary = new System.Windows.Forms.ListView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -42,6 +42,10 @@
             this.addCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addCategoryToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.fileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fileType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.filePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fileComments = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.fileInfoNameLabel = new System.Windows.Forms.Label();
@@ -55,10 +59,6 @@
             this.fileInfoComment = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.label3 = new System.Windows.Forms.Label();
-            this.fileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fileType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.filePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fileComments = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -76,19 +76,19 @@
             // listViewLibrary
             // 
             this.listViewLibrary.AutoArrange = false;
-            listViewGroup4.Header = "Directories";
-            listViewGroup4.Name = "Directories";
-            listViewGroup4.Tag = "Directories";
-            listViewGroup5.Header = "Playlists";
-            listViewGroup5.Name = "Playlists";
-            listViewGroup5.Tag = "Playlists";
-            listViewGroup6.Header = "Categories";
-            listViewGroup6.Name = "Categories";
-            listViewGroup6.Tag = "Categories";
+            listViewGroup1.Header = "Directories";
+            listViewGroup1.Name = "Directories";
+            listViewGroup1.Tag = "Directories";
+            listViewGroup2.Header = "Playlists";
+            listViewGroup2.Name = "Playlists";
+            listViewGroup2.Tag = "Playlists";
+            listViewGroup3.Header = "Categories";
+            listViewGroup3.Name = "Categories";
+            listViewGroup3.Tag = "Categories";
             this.listViewLibrary.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup4,
-            listViewGroup5,
-            listViewGroup6});
+            listViewGroup1,
+            listViewGroup2,
+            listViewGroup3});
             this.listViewLibrary.Location = new System.Drawing.Point(16, 40);
             this.listViewLibrary.MultiSelect = false;
             this.listViewLibrary.Name = "listViewLibrary";
@@ -180,6 +180,34 @@
             this.dataGridView1.Size = new System.Drawing.Size(506, 398);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
+            // 
+            // fileName
+            // 
+            this.fileName.DataPropertyName = "Name";
+            this.fileName.HeaderText = "Name";
+            this.fileName.Name = "fileName";
+            this.fileName.ReadOnly = true;
+            // 
+            // fileType
+            // 
+            this.fileType.DataPropertyName = "Type";
+            this.fileType.HeaderText = "Type";
+            this.fileType.Name = "fileType";
+            this.fileType.ReadOnly = true;
+            // 
+            // filePath
+            // 
+            this.filePath.DataPropertyName = "Path";
+            this.filePath.HeaderText = "Path";
+            this.filePath.Name = "filePath";
+            this.filePath.ReadOnly = true;
+            // 
+            // fileComments
+            // 
+            this.fileComments.DataPropertyName = "Comment";
+            this.fileComments.HeaderText = "Comment";
+            this.fileComments.Name = "fileComments";
+            this.fileComments.ReadOnly = true;
             // 
             // label2
             // 
@@ -307,34 +335,6 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Details:";
             // 
-            // fileName
-            // 
-            this.fileName.DataPropertyName = "Name";
-            this.fileName.HeaderText = "Name";
-            this.fileName.Name = "fileName";
-            this.fileName.ReadOnly = true;
-            // 
-            // fileType
-            // 
-            this.fileType.DataPropertyName = "Type";
-            this.fileType.HeaderText = "Type";
-            this.fileType.Name = "fileType";
-            this.fileType.ReadOnly = true;
-            // 
-            // filePath
-            // 
-            this.filePath.DataPropertyName = "Path";
-            this.filePath.HeaderText = "Path";
-            this.filePath.Name = "filePath";
-            this.filePath.ReadOnly = true;
-            // 
-            // fileComments
-            // 
-            this.fileComments.DataPropertyName = "Comment";
-            this.fileComments.HeaderText = "Comment";
-            this.fileComments.Name = "fileComments";
-            this.fileComments.ReadOnly = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -370,25 +370,25 @@
         private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addPlaylistToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem addCategoryToolStripMenuItem1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label fileInfoNameLabel;
-        private System.Windows.Forms.Label fileInfoNameSelected;
+        public System.Windows.Forms.Label fileInfoNameSelected;
         private System.Windows.Forms.Label fileInfoTypeLabel;
-        private System.Windows.Forms.Label fileInfoTypeSelected;
+        public System.Windows.Forms.Label fileInfoTypeSelected;
         private System.Windows.Forms.Label fileInfoPathLabel;
-        private System.Windows.Forms.Label fileInfoPathSelected;
+        public System.Windows.Forms.Label fileInfoPathSelected;
         private System.Windows.Forms.Label fileInfoCommentLabel;
         private System.Windows.Forms.Label fileInfoCategoryLabel;
         public System.Windows.Forms.ListView listViewLibrary;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.Label fileInfoComment;
+        public System.Windows.Forms.Label fileInfoComment;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn fileName;
         private System.Windows.Forms.DataGridViewTextBoxColumn fileType;
         private System.Windows.Forms.DataGridViewTextBoxColumn filePath;
         private System.Windows.Forms.DataGridViewTextBoxColumn fileComments;
+        public System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

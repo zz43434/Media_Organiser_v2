@@ -9,30 +9,13 @@ namespace Media_Organiser.Data
 {
     public class ConfigData
     {
+        public ConfigData()
+        {    
+        }
+
         public List<DirectoryModel> directories = new List<DirectoryModel>();
-        string[] filePaths;
         public List<PlaylistModel> playlists = new List<PlaylistModel>();
         public List<CategoryModel> categories = new List<CategoryModel>();
-
-        public static List<DirectoryModel> getDirectories()
-        {
-            return directories;
-        }
-
-        public string[] getFilePaths()
-        {
-            return filePaths;
-        }
-
-        public List<PlaylistModel> getPlaylists()
-        {
-            return playlists;
-        }
-
-        public List<CategoryModel> getCategories()
-        {
-            return categories;
-        }
 
     }
 }

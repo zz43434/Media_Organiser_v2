@@ -11,5 +11,11 @@ namespace Media_Organiser.Models
     {
         public string DirectoryName { get; set; }
         public BindingList<MediaFileModel> MediaFiles { get; set; }
+
+        public DirectoryModel(string name, BindingList<MediaFileModel> files)
+        {
+            DirectoryName = name;
+            MediaFiles = files;
+        }
     }
 }
