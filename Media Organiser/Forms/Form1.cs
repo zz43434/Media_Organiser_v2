@@ -10,11 +10,6 @@ namespace Media_Organiser
         {
             InitializeComponent();
             _test1 = new Directories(this);
-            _test1.loadFiles();
-            listViewLibrary.Groups.Add(new ListViewGroup("Directories"));
-            listViewLibrary.Groups.Add(new ListViewGroup("Playlists"));
-            listViewLibrary.Groups.Add(new ListViewGroup("Directories"));
-
         }
 
         private Directories _test1;

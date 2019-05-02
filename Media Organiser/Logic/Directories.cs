@@ -22,6 +22,7 @@ namespace Media_Organiser.Logic
         public Directories(Form1 form)
         {
             _form = form;
+            loadFiles();
         }
 
         public void loadFiles()
@@ -181,9 +182,9 @@ namespace Media_Organiser.Logic
 
             _form.dataGridView1.DataSource = null;
 
-            Json.saveToJson(@".\playlists.json", categories);
+            Json.saveToJson(@".\playlists.json", playlists);
             Json.saveToJson(@".\categories.json", categories);
-            Json.saveToJson(@".\directories.json", categories);
+            Json.saveToJson(@".\directories.json", directories);
         }
 
         public void editListViewItem(ListViewItem item)
