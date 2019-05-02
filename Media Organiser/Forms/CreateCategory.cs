@@ -26,6 +26,10 @@ namespace Media_Organiser.Forms
                 categoryName = textBox1.Text;
                 this.Close();
             }
+            else
+            {
+                MessageBox.Show("Please enter Category name!");
+            }
         }
     }
 }

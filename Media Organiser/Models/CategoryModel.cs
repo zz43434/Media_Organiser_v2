@@ -10,7 +10,7 @@ namespace Media_Organiser.Models
     {
         public string CategoryName { get; set; }
 
-        public CategoryModel(string name)
+        public CategoryModel(string name = null)
         {
             CategoryName = name;
         }

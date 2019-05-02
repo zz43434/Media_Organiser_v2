@@ -89,6 +89,10 @@ namespace Media_Organiser.Models
                 playlistName = textBox1.Text;
                 this.Close();
             }
+            else
+            {
+                MessageBox.Show("You need to enter a name and add media!");
+            }
         }
 
         private MediaFileModel findDataInSet(String filename)

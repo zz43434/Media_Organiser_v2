@@ -11,15 +11,15 @@ using System.Windows.Forms;
 
 namespace Media_Organiser.Logic
 {
-    public class Directories
+    public class LogicClass
     {
         private Form1 _form;
-        private string[] filePaths;
+        private string[] filePaths = null;
         public List<DirectoryModel> directories = new List<DirectoryModel>();
         public List<PlaylistModel> playlists = new List<PlaylistModel>();
         public List<CategoryModel> categories = new List<CategoryModel>();
 
-        public Directories(Form1 form)
+        public LogicClass(Form1 form)
         {
             _form = form;
             loadFiles();
@@ -81,7 +81,7 @@ namespace Media_Organiser.Logic
         {
             FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
             folderBrowser.ShowNewFolderButton = true;
-         
+
             DialogResult result = folderBrowser.ShowDialog();
             DirectoryModel direct = new DirectoryModel(folderBrowser.SelectedPath, new BindingList<MediaFileModel>());
 
@@ -90,33 +90,33 @@ namespace Media_Organiser.Logic
                 Environment.SpecialFolder root = folderBrowser.RootFolder;
                 try
                 {
-                    filePaths = Directory.GetFiles(folderBrowser.SelectedPath, "*.pdf", SearchOption.AllDirectories);
+                    filePaths = Directory.GetFiles(folderBrowser.SelectedPath, "*.jpg", SearchOption.AllDirectories);
+
+                    for (var i = 0; i < filePaths.Length; i++)
+                    {
+                        var fn = new FileInfo(filePaths[i]);
+                        MediaFileModel importFile = new MediaFileModel();
+                        importFile.Name = fn.Name.ToString();
+                        importFile.Type = fn.Extension.ToString();
+                        importFile.Path = fn.Directory.ToString();
+
+                        direct.MediaFiles.Add(importFile);
+                    }
+                    ListViewItem directory = new ListViewItem(folderBrowser.SelectedPath, _form.listViewLibrary.Groups[0]);
+                    directory.Selected = true;
+
+                    directories.Add(direct);
+                    _form.listViewLibrary.Items.Add(directory);
+
+                    _form.dataGridView1.DataSource = direct.MediaFiles;
+                    Json.saveToJson(@".\directories.json", directories);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    MessageBox.Show("Sorry this folder is not available because " + ex.Message);
                 }
+                
             }
-
-            for (var i = 0; i < filePaths.Length; i++)
-            {
-                var fn = new FileInfo(filePaths[i]);
-                MediaFileModel importFile = new MediaFileModel();
-                importFile.Name = fn.Name.ToString();
-                importFile.Type = fn.Extension.ToString();
-                importFile.Path = fn.Directory.ToString();
-
-                direct.MediaFiles.Add(importFile);
-            }
-
-            ListViewItem directory = new ListViewItem(folderBrowser.SelectedPath, _form.listViewLibrary.Groups[0]);
-            directory.Selected = true;
-
-            directories.Add(direct);
-            _form.listViewLibrary.Items.Add(directory);
-
-            _form.dataGridView1.DataSource = direct.MediaFiles;
-            Json.saveToJson(@".\directories.json", directories);
         }
 
         public void createPlaylist()
@@ -137,6 +137,7 @@ namespace Media_Organiser.Logic
             _form.listViewLibrary.Items.Add(playlist);
 
             _form.dataGridView1.DataSource = plist.MediaFiles;
+
             Json.saveToJson(@".\playlists.json", playlists);
         }
 
@@ -206,6 +207,7 @@ namespace Media_Organiser.Logic
                     }
                     item.Selected = true;
                     _form.dataGridView1.Refresh();
+                    Json.saveToJson(@".\playlists.json", playlists);
                 }
             }
         }
@@ -221,7 +223,12 @@ namespace Media_Organiser.Logic
             AddCategory categoryForm = new AddCategory(file, categoryList);
             categoryForm.ShowDialog();
 
-            file.Category = categoryForm.Category.CategoryName;
+            if (categoryForm.Category.CategoryName != null)
+            {
+                file.Category = categoryForm.Category.CategoryName;
+                Json.saveToJson(@".\directories.json", directories);
+                Json.saveToJson(@".\playlists.json", playlists);
+            }
         }
 
         private void editListMediaItem(MediaFileModel file)

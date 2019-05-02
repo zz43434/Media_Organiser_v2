@@ -30,14 +30,18 @@ namespace Media_Organiser.Forms
             listBox1.DataSource = categories;
         }
 
-        public CategoryModel Category;
+        public CategoryModel Category = new CategoryModel();
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Category.CategoryName =listBox1.SelectedValue.ToString();
             if (listBox1.SelectedItem != null)
             {
-                Category = new CategoryModel(listBox1.SelectedValue.ToString());
                 this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Please select a category!");
             }
         }
 

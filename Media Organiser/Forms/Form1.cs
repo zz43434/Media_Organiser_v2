@@ -9,10 +9,10 @@ namespace Media_Organiser
         public Form1()
         {
             InitializeComponent();
-            _test1 = new Directories(this);
+            _test1 = new LogicClass(this);
         }
 
-        private Directories _test1;
+        private LogicClass _test1;
         
         private void importToolStripMenuItem_Click(object sender, EventArgs e)
         {

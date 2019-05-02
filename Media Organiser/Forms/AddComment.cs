@@ -34,6 +34,10 @@ namespace Media_Organiser.Forms
                 Comment = textBox1.Text;
                 this.Close();
             }
+            else
+            {
+                MessageBox.Show("Please enter comment!");
+            }
         }
     }
 }

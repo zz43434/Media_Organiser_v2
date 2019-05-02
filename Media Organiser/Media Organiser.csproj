@@ -53,7 +53,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\ConfigData.cs" />
     <Compile Include="Forms\AddCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,8 +83,8 @@
     <Compile Include="Forms\CreatePlaylist.Designer.cs">
       <DependentUpon>CreatePlaylist.cs</DependentUpon>
     </Compile>
-    <Compile Include="Logic\Directories.cs" />
-    <Compile Include="Logic\Json.cs" />
+    <Compile Include="Logic\LogicClass.cs" />
+    <Compile Include="Data\Json.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\DirectoryModel.cs" />
     <Compile Include="Models\MediaFileModel.cs" />
