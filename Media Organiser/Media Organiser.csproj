@@ -71,11 +71,11 @@
     <Compile Include="Forms\AddComment.Designer.cs">
       <DependentUpon>AddComment.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form1.cs">
+    <Compile Include="Forms\Media Organiser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\Media Organiser.Designer.cs">
+      <DependentUpon>Media Organiser.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CreatePlaylist.cs">
       <SubType>Form</SubType>
@@ -100,8 +100,8 @@
     <EmbeddedResource Include="Forms\AddComment.resx">
       <DependentUpon>AddComment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Media Organiser.resx">
+      <DependentUpon>Media Organiser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CreatePlaylist.resx">
       <DependentUpon>CreatePlaylist.cs</DependentUpon>

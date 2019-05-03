@@ -13,13 +13,13 @@ namespace Media_Organiser.Logic
 {
     public class LogicClass
     {
-        private Form1 _form;
+        private MediaOrganiser _form;
         private string[] filePaths = null;
         public List<DirectoryModel> directories = new List<DirectoryModel>();
         public List<PlaylistModel> playlists = new List<PlaylistModel>();
         public List<CategoryModel> categories = new List<CategoryModel>();
 
-        public LogicClass(Form1 form)
+        public LogicClass(MediaOrganiser form)
         {
             _form = form;
             loadFiles();
@@ -90,7 +90,12 @@ namespace Media_Organiser.Logic
                 Environment.SpecialFolder root = folderBrowser.RootFolder;
                 try
                 {
-                    filePaths = Directory.GetFiles(folderBrowser.SelectedPath, "*.jpg", SearchOption.AllDirectories);
+                    var fileExtensions = new[] { ".doc", ".docx", ".pdf", ".ppt", ".pptx", ".xls", ".xslx", ".mp3", ".jpg", ".png",
+                    ".bpm", ".avi", ".mp4"};
+                    filePaths = Directory
+                        .GetFiles(folderBrowser.SelectedPath)
+                        .Where(file => fileExtensions.Any(file.ToLower().EndsWith))
+                        .ToArray();
 
                     for (var i = 0; i < filePaths.Length; i++)
                     {

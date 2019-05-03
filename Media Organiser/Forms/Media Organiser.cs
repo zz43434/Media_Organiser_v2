@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace Media_Organiser
 {
-    public partial class Form1 : Form
+    public partial class MediaOrganiser : Form
     {
-        public Form1()
+        public MediaOrganiser()
         {
             InitializeComponent();
             _test1 = new LogicClass(this);
@@ -50,6 +50,11 @@ namespace Media_Organiser
         private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
         {
             _test1.dataGridViewClick(e);
+        }
+
+        private void MediaOrganiser_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

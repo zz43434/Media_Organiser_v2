@@ -1,6 +1,6 @@
 ﻿namespace Media_Organiser
 {
-    partial class Form1
+    partial class MediaOrganiser
     {
         /// <summary>
         /// Required designer variable.
@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Directories", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Playlists", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Categories", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Directories", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Playlists", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Categories", System.Windows.Forms.HorizontalAlignment.Left);
             this.label1 = new System.Windows.Forms.Label();
             this.listViewLibrary = new System.Windows.Forms.ListView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -76,19 +76,19 @@
             // listViewLibrary
             // 
             this.listViewLibrary.AutoArrange = false;
-            listViewGroup1.Header = "Directories";
-            listViewGroup1.Name = "Directories";
-            listViewGroup1.Tag = "Directories";
-            listViewGroup2.Header = "Playlists";
-            listViewGroup2.Name = "Playlists";
-            listViewGroup2.Tag = "Playlists";
-            listViewGroup3.Header = "Categories";
-            listViewGroup3.Name = "Categories";
-            listViewGroup3.Tag = "Categories";
+            listViewGroup4.Header = "Directories";
+            listViewGroup4.Name = "Directories";
+            listViewGroup4.Tag = "Directories";
+            listViewGroup5.Header = "Playlists";
+            listViewGroup5.Name = "Playlists";
+            listViewGroup5.Tag = "Playlists";
+            listViewGroup6.Header = "Categories";
+            listViewGroup6.Name = "Categories";
+            listViewGroup6.Tag = "Categories";
             this.listViewLibrary.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2,
-            listViewGroup3});
+            listViewGroup4,
+            listViewGroup5,
+            listViewGroup6});
             this.listViewLibrary.Location = new System.Drawing.Point(16, 40);
             this.listViewLibrary.MultiSelect = false;
             this.listViewLibrary.Name = "listViewLibrary";
@@ -335,7 +335,7 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Details:";
             // 
-            // Form1
+            // MediaOrganiser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -348,8 +348,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MediaOrganiser";
+            this.Text = "Media Organiser";
+            this.Load += new System.EventHandler(this.MediaOrganiser_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
